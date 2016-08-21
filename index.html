@@ -59,7 +59,7 @@
                         <a class="page-scroll" href="footer">Register</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#">Login</a>
+                        <a class="page-scroll" data-toggle="modal" data-target="#loginModal">Login</a>
                     </li>
                 </ul>
             </div>
@@ -91,18 +91,18 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>About Pokerpal</h2>
                 <p>Pokerpal is a pokergame locating service. It is designed for poker players to locate poker games within a specified range from their location. We aspire to bring the poker community together by allowing players to host games or search for hosted games in their area</p>
-                <p>If you have not done so already <a class="page-scroll" href="footer">Register</a> or <a href="#">Login Here</a> to find your next poker game.</p>
+                <p>If you have not done so already <a class="page-scroll" href="footer">Register</a> or <a data-toggle="modal" data-target="#loginModal">Login Here</a> to find your next poker game.</p>
             </div>
         </div>
     </section>
 
-    <!-- Download Section -->
+    <!-- Register Section -->
     <section id="download" class="content-section text-center">
         <div class="download-section">
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>Register Here</h2>
-                    <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg" style="margin-bottom:20px;">Register</a>
+                    <a data-toggle="modal" data-target="#registerModal" class="btn btn-default btn-lg" style="margin-bottom:20px;">Register</a>
                     <p style="padding-bottom:100px;">To find a poker game near you, you must be a registered user!</p>
                     
                 </div>
@@ -111,7 +111,150 @@
     </section>
 
     <!-- Login Modal -->
-    
+    <div id="loginModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 style="color:#666666;" class="modal-title">Log in here!</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label style="color:#666666;" for="username" class="control-label"> Username: </label>
+                            <input type="text" class="form-control" id="username">
+                        </div>
+                        <div class="form-group">
+                            <label style="color:#666666;" for="password" class="control-label"> Password: </label>
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Log In</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 style="color:#666666;" class="modal-title">Register here!</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label style="color:#666666;" for="firstname" class="control-label"> First Name: </label>
+                            <input type="text" class="form-control" id="firstname">
+                        </div>
+                        <div class="form-group">
+                            <label style="color:#666666;" for="lastname" class="control-label"> Last Name: </label>
+                            <input type="text" class="form-control" id="lastname">
+                        </div>
+                        <div class="form-group">
+                            <label style="color:#666666;" for="username" class="control-label"> User Name: </label>
+                            <input type="text" class="form-control" id="username">
+                        </div>
+                        <div class="form-group">
+                            <label style="color:#666666;" for="password" class="control-label"> Password: </label>
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                        <div class="form-group">
+                            <label style="color:#666666;" for="confirmpassword" class="control-label"> Confirm Password: </label>
+                            <input type="password" class="form-control" id="confirmpassword">
+                        </div>
+                        <div class="form-group">
+                            <label style="color:#666666;" for="email" class="control-label"> Email: </label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label style="color:#666666;" for="address" class="control-label"> Address: </label>
+                            <input type="email" class="form-control" id="address">
+                        </div>
+                        <div class="form-group">
+                            <label style="color:#666666;" for="apt" class="control-label"> Apt: </label>
+                            <input type="text" class="form-control" id="apt">
+                        </div>
+                        <div class="form-group">
+                            <label style="color:#666666;" for="city" class="control-label"> City: </label>
+                            <input type="text" class="form-control" id="city">
+                        </div>
+                        <div class="form-group">
+                            <label style="color:#666666;" for="state" class="control-label"> State: </label>
+                            <select class="form-control" id="state">
+                                <option value="AL" selected="selected">Choose One</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="color:#666666;" for="zipcode" class="control-label">Zip Code: </label>
+                            <input type="text" class="form-control" id="zipcode">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Log In</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer >
