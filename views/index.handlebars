@@ -1,0 +1,17 @@
+<h1>Project Management Tool</h1>
+
+{{#if logged_in}}
+  <form action="/users/new" method="POST">
+    <input type="text" name="newUser">
+
+    <input type="submit">
+  </form>
+{{/if}}
+
+{{#unless logged_in}}
+  <p>
+    You must login to add a person.
+  </p>
+{{/unless}}
+
+<h2>People</h2>
