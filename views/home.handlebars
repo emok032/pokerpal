@@ -1,0 +1,101 @@
+<div class="container">
+	<div class="row">
+		<br>
+		<br>
+		<div class="jumbotron">
+		  <h1 style="text-align:center;">Hello, {{username}}!</h1>
+		  <p style="text-align:center;">Now that you are a member, what would you like to do?</p>
+		  <hr>
+		  <div class="btn-group center-block" style="max-width:400px"> 
+		      <div data-toggle="modal" data-target="#searchgame" class="btn btn-primary btn-lg">Search Games</div> 
+		      <div data-toggle="modal" data-target="#hostgame" style="margin-left:30px;" class="btn btn-info btn-lg">Host Game</div>
+		  </div>
+		  <br>
+		<br> 
+    </div> 
+
+    <!-- Search Modal -->
+    <div id="searchgame" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 style="color:#666666;" class="modal-title">Search for a game:</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label style="color:#666666;" for="zip" class="control-label"> Enter Zip Code: </label>
+                            <input type="text" class="form-control" id="zip">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button style="float:left;" type="button" class="btn btn-primary btn-lg">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Host Modal -->
+    <div id="hostgame" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 style="color:#666666;" class="modal-title">Host a game:</h4>
+                </div>
+                <div class="modal-body">
+                    
+                        <div class="container">
+						    <div style="margin:0;" class="row">
+						        <div class='col-sm-6'>
+							        <form>
+							            <div class="form-group">
+							                <h4><span style="display:inline-block;float:left;" class="label label-default" for="date">Date:</span></h4>
+						                	<input style="float:left;" type='text' class="form-control" id="date" name="date" />
+						                	<br>
+						                	<h4 ><span style="display:inline-block;float:left;" class="label label-default" for="time">Time:</span></h4>
+						                	<input style="float:left;" type='text' class="form-control" id="time" name="time" />
+						                	<br>
+							            </div>
+							        </form>
+						        </div>
+						    </div>
+						</div>
+                </div>
+                <div class="modal-footer">
+                    <button style="float:left;" type="button" class="btn btn-primary btn-lg">Host</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div class="col-xs-6 text-center" class="task">
+		<div class="row">
+		  {{#each burger_data}}
+		  	{{#unless this.devoured}}
+			<div class="col-xs-9 text-center">
+				<pre>{{this.id}}. {{this.burger_name}}
+				</pre>
+			  		<!-- {{this.Date}} -->
+			</div>
+			<div class="col-xs-3 text-center">
+				<form method="POST" action="/burgers/update?_method=PUT" class="button-size">
+					<input input type="hidden" type="text" name="burger_id" value={{this.id}}><br>
+					<button type="submit" class="btn btn-default">Devour it!</button>
+				</form>
+			</div>
+			{{/unless}}
+		  {{/each}}
+		</div>
+	</div>
+		<div class="col-xs-6 text-center" class="task">
+			  {{#each burger_data}}
+			  	{{#if this.devoured}}
+			  		<input class="form-control" type="text" placeholder="{{this.id}} . {{this.burger_name}}" readonly>
+				{{/if}}
+			  {{/each}}
+		</div>
+	</div>
+</div>
