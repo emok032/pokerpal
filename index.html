@@ -13,6 +13,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
@@ -56,7 +57,7 @@
                         <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="footer">Register</a>
+                        <a class="page-scroll reg" href="footer">Register</a>
                     </li>
                     <li>
                         <a class="page-scroll" data-toggle="modal" data-target="#loginModal">Login</a>
@@ -102,7 +103,7 @@
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>Register Here</h2>
-                    <a data-toggle="modal" data-target="#registerModal" class="btn btn-default btn-lg" style="margin-bottom:20px;">Register</a>
+                    <a data-toggle="modal" data-target="#registerModal" id="regBtn" class="btn btn-default btn-lg" style="margin-bottom:20px;">Register</a>
                     <p style="padding-bottom:100px;">To find a poker game near you, you must be a registered user!</p>
                     
                 </div>
@@ -271,6 +272,24 @@
 
     <!-- Theme JavaScript -->
     <script src="js/grayscale.js"></script>
+
+    <script type="text/javascript">
+         $(function(){
+            var bounceClass = 'animated bounce';
+            var endClass = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
+            $('.reg').on({
+                'click': function(){
+                    $('#regBtn').addClass(bounceClass).one(endClass, function(){
+                        $(this).removeClass(bounceClass);
+                    })
+                }
+            });
+        });
+
+    </script>
+
+   
 
 </body>
 
