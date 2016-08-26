@@ -1,10 +1,11 @@
 {
   "name": "pokerpal",
   "version": "1.0.0",
-  "description": "A poker game locator service",
-  "main": "index.js",
+  "description": "[Grayscale](http://startbootstrap.com/template-overviews/grayscale/) is a multipurpose, one page HTML theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This template features various content sections and a Google Maps section with a custom map marker.",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -15,14 +16,5 @@
   "bugs": {
     "url": "https://github.com/emadkheiralla/PokerPal/issues"
   },
-  "homepage": "https://github.com/emadkheiralla/PokerPal#readme",
-  "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "express-handlebars": "^3.0.0",
-    "moment": "^2.14.1",
-    "mysql": "^2.11.1",
-    "sequelize": "^3.24.1",
-    "sequelize-cli": "^2.4.0"
-  }
+  "homepage": "https://github.com/emadkheiralla/PokerPal#readme"
 }

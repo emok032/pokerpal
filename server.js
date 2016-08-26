@@ -1,113 +1,87 @@
 // Dependencies
-// =============================================================
+// ============
 var express = require('express');
-var bodyParser = require('body-parser');
 var path = require('path');
-var exphbs  = require('express-handlebars');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser'); // for working with cookies
+var bodyParser = require('body-parser');
+var session = require('express-session'); 
+var methodOverride = require('method-override');
+ // for deletes in express
 
-// Sets up the Express App
-// =============================================================
+
+// Our model controllers (rather than routes)
+
+var users_controller = require('./controllers/users_controller');
+var index_html = require('index.html'); // do we need this?
+
+
+
+
+// Express settings
+// ================
+
+// instantiate our app
 var app = express();
-var PORT = 3000;
 
-// Sets up the Express app to handle data parsing
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
-app.use(express.static(process.cwd() + '/public'));
+// override POST to have DELETE and PUT
+app.use(methodOverride('_method'))
 
-// // Star Wars Characters (DATA)
-// // =============================================================
-// var pokemon = [{
-//   routeName: 'bulbasaur',
-//   name: 'Bulbasaur',
-//   type: 'Poison'
-// }, {
-//   routeName: 'ivysaur',
-//   name: 'Ivysaur',
-//   type: 'Grass'
-// }, {
-//   routeName: 'charmander',
-//   name: 'Charmander',
-//   type: 'Fire'
-// }];
+//allow sessions
+app.use(session({ 	secret: 'app',
+					cookie: { maxAge: 60000 },
+					resave: true,
+					saveUninitialized: true
+					}));
+app.use(cookieParser());
 
-// Routes
-// =============================================================
+// view engine setup
+// app.set('views', path.join(__dirname, 'views'));
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+//set up handlebars
+var exphbs = require('express-handlebars');
+app.engine('handlebars', exphbs({
+    defaultLayout: 'main'
+}));
 app.set('view engine', 'handlebars');
 
 
-// Basic route that sends the user first to the AJAX Page
-app.get('/', function (req, res) {
-  // res.send('Welcome to the Star Wars Page!')
-  res.sendFile(path.join(__dirname, 'index.html'));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', users_controller);
+
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next();
 });
 
-app.get("/home", function(req, res){
-  res.render("home")
+// 8.25.2016
+var models = require("./models");
+
+// we set the port of the app
+app.set('port', process.env.PORT || 3000);
+
+
+// we sync the models with our db 
+// (thus creating the apropos tables)
+models.sequelize.sync().then(function () {
+	// set our app to listen to the port we set above
+  var server = app.listen(app.get('port'), function() {
+  	// then save a log of the listening to our debugger.
+    console.log('Express server listening on port ' + server.address().port);
+  });
 });
 
-//Defining middleware to serve static files
-app.use('/static', express.static('public'));
+// our module get's exported as app.
+module.exports = app;
 
-// // Search for Specific Character (or all characters) - provides JSON
-// app.get('/api/pokemon/', function (req, res) {
-//   var chosen = req.params.pokemon;
 
-//   if (chosen) {
-//     console.log(chosen);
-
-//     for (var i = 0; i < pokemon.length; i++) {
-//       if (chosen === pokemon[i].routeName) {
-//         res.json(pokemon[i]);
-//         return;
-//       }
-//     }
-
-//     res.json(false);
-//   } else {
-//     res.json(pokemon);
-//   }
-// });
-
-// app.get('/api/pokemon/:index/', function (req, res) {
-//   var chosen = req.params.pokemon;
-
-//   if (chosen) {
-//     console.log(chosen);
-
-//     for (var i = 0; i < pokemon.length; i++) {
-//       if (chosen === pokemon[i].routeName) {
-//         res.json(pokemon[i]);
-//         return;
-//       }
-//     }
-
-//     res.json(false);
-//   } else {
-//     res.json(pokemon);
-//   }
-// });
-
-// // Create New Characters - takes in JSON input
-// app.post('/api/pokemon/', function (req, res) {
-//   // req.body hosts is equal to the JSON post sent from the user
-//   var newpokemon = req.body;
-
-//   console.log(newpokemon);
-
-//   // We then add the json the user sent to the character array
-//   characters.push(newpokemon);
-
-//   // We then display the JSON to the users
-//   res.json(newpokemon);
-// });
-
-// Starts the server to begin listening
-// =============================================================
-app.listen(PORT, function () {
-  console.log('App listening on PORT ' + PORT);
-});
+// Where's the listen? Open up bin/www, and read the comments.
