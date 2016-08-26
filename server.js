@@ -8,15 +8,24 @@ var cookieParser = require('cookie-parser'); // for working with cookies
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var methodOverride = require('method-override');
- // for deletes in express
+var Sequelize = require('sequelize');
 
-
+//add in mySQL db here
+var mySequelize = new Sequelize("");
 // Our model controllers (rather than routes)
 
 var users_controller = require('./controllers/Users_controller');
 // var index_html = require('index.html'); // do we need this?
 
-
+//see if database is working
+mySequelize.authenticate().complete(function(err){
+	if(err){
+		console.log('Unable to connect to database:', err);
+	}
+	else{
+		console.log('Connection successful');
+	}
+});
 
 
 // Express settings
