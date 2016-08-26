@@ -3,8 +3,7 @@ var bcrypt = require('bcryptjs');
 var models  = require('../models');
 var express = require('express');
 var router  = express.Router();
-var path = require('path');
-var 
+var path = require('path'); 
 
 
 //this is the users_controller.js file
@@ -37,7 +36,7 @@ router.post('/create', function(req,res) {
 			// then use that salt to hash the user's password.
 			bcrypt.genSalt(10, function(err, salt) {
 					bcrypt.hash(req.body.password, salt, function(err, hash) {
-						
+
 						// Using the User model, create a new user,
 						// storing the email they sent and the hash you just made
 						models.User.create({
@@ -85,14 +84,14 @@ router.post('/login', function(req, res) {
 		// Solution:
 		// =========
 		// Use bcrypt to compare the user's password input
-		// with the hash stored in the user's row. 
-		// If the result is true, 
+		// with the hash stored in the user's row.
+		// If the result is true,
     bcrypt.compare(req.body.password, user.password_hash, function(err, result) {
         // if the result is true (and thus pass and hash match)
         if (result == true){
 
-        	// save the user's information 
-					// to req.session, as the comments below show 
+        	// save the user's information
+					// to req.session, as the comments below show
 
 					// so what's happening here?
 					// we enter the user's session by setting properties to req.

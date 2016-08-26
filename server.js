@@ -6,15 +6,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser'); // for working with cookies
 var bodyParser = require('body-parser');
-var session = require('express-session'); 
+var session = require('express-session');
 var methodOverride = require('method-override');
  // for deletes in express
 
 
 // Our model controllers (rather than routes)
 
-var users_controller = require('./controllers/users_controller');
-var index_html = require('index.html'); // do we need this?
+var users_controller = require('./controllers/Users_controller');
+// var index_html = require('index.html'); // do we need this?
 
 
 
@@ -70,7 +70,7 @@ var models = require("./models");
 app.set('port', process.env.PORT || 3000);
 
 
-// we sync the models with our db 
+// we sync the models with our db
 // (thus creating the apropos tables)
 models.sequelize.sync().then(function () {
 	// set our app to listen to the port we set above
