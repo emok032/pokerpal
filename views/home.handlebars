@@ -3,8 +3,8 @@
 		<br>
 		<br>
 		<div class="jumbotron">
-		  <h1 style="text-align:center;">Hello, {{username}}!</h1>
-		  <p style="text-align:center;">Now that you are a member, what would you like to do?</p>
+		  <h1 class="jstyle" style="text-align:center;"> Hello, {{username}}!</h1>
+		  <p class="jstyle" style="text-align:center;"> Now that you are a member, what would you like to do?</p>
 		  <hr>
 		  <div class="btn-group center-block" style="max-width:400px"> 
 		      <div data-toggle="modal" data-target="#searchgame" class="btn btn-primary btn-lg">Search Games</div> 
@@ -27,6 +27,14 @@
                         <div class="form-group">
                             <label style="color:#666666;" for="zip" class="control-label"> Enter Zip Code: </label>
                             <input type="text" class="form-control" id="zip">
+                            <label style="color:#666666;" for="datesearch" class="control-label"> Choose a Date: </label>
+                            <input type="text" class="form-control" id="datesearch">
+
+                            <script>
+						      $( function(){
+						        $( "#datesearch" ).datepicker();
+						      });
+						    </script>
                         </div>
                     </form>
                 </div>
@@ -51,14 +59,92 @@
 						    <div style="margin:0;" class="row">
 						        <div class='col-sm-6'>
 							        <form>
-							            <div class="form-group">
-							                <h4><span style="display:inline-block;float:left;" class="label label-default" for="date">Date:</span></h4>
-						                	<input style="float:left;" type='text' class="form-control" id="date" name="date" />
-						                	<br>
-						                	<h4 ><span style="display:inline-block;float:left;" class="label label-default" for="time">Time:</span></h4>
-						                	<input style="float:left;" type='text' class="form-control" id="time" name="time" />
-						                	<br>
-							            </div>
+						            	<div class="form-group">
+							                <label style="color:#666666;" for="datehost" class="control-label"> Choose Date: </label>
+				                            <input type="text" class="form-control" id="datehost">
+			                            </div>
+			                            <div class="form-group">
+				                            <label style="color:#666666;" for="timehost" class="control-label"> Choose Time: </label>
+				                            <input type="time" class="form-control" id="timehost">
+				                        </div>
+			                            <div class="form-group">
+				                            <label style="color:#666666;" for="address" class="control-label">(Game) Address: </label>
+				                            <input type="email" class="form-control" id="address">
+				                        </div>
+				                        <div class="form-group">
+				                            <label style="color:#666666;" for="apt" class="control-label"> Apt: </label>
+				                            <input type="text" class="form-control" id="apt">
+				                        </div>
+				                        <div class="form-group">
+				                            <label style="color:#666666;" for="city" class="control-label"> City: </label>
+				                            <input type="text" class="form-control" id="city">
+				                        </div>
+				                        <div class="form-group">
+				                            <label style="color:#666666;" for="state" class="control-label"> State: </label>
+				                            <select class="form-control" id="state">
+				                                <option value="AL" selected="selected">Choose One</option>
+				                                <option value="AL">Alabama</option>
+				                                <option value="AK">Alaska</option>
+				                                <option value="AZ">Arizona</option>
+				                                <option value="AR">Arkansas</option>
+				                                <option value="CA">California</option>
+				                                <option value="CO">Colorado</option>
+				                                <option value="CT">Connecticut</option>
+				                                <option value="DE">Delaware</option>
+				                                <option value="DC">District Of Columbia</option>
+				                                <option value="FL">Florida</option>
+				                                <option value="GA">Georgia</option>
+				                                <option value="HI">Hawaii</option>
+				                                <option value="ID">Idaho</option>
+				                                <option value="IL">Illinois</option>
+				                                <option value="IN">Indiana</option>
+				                                <option value="IA">Iowa</option>
+				                                <option value="KS">Kansas</option>
+				                                <option value="KY">Kentucky</option>
+				                                <option value="LA">Louisiana</option>
+				                                <option value="ME">Maine</option>
+				                                <option value="MD">Maryland</option>
+				                                <option value="MA">Massachusetts</option>
+				                                <option value="MI">Michigan</option>
+				                                <option value="MN">Minnesota</option>
+				                                <option value="MS">Mississippi</option>
+				                                <option value="MO">Missouri</option>
+				                                <option value="MT">Montana</option>
+				                                <option value="NE">Nebraska</option>
+				                                <option value="NV">Nevada</option>
+				                                <option value="NH">New Hampshire</option>
+				                                <option value="NJ">New Jersey</option>
+				                                <option value="NM">New Mexico</option>
+				                                <option value="NY">New York</option>
+				                                <option value="NC">North Carolina</option>
+				                                <option value="ND">North Dakota</option>
+				                                <option value="OH">Ohio</option>
+				                                <option value="OK">Oklahoma</option>
+				                                <option value="OR">Oregon</option>
+				                                <option value="PA">Pennsylvania</option>
+				                                <option value="RI">Rhode Island</option>
+				                                <option value="SC">South Carolina</option>
+				                                <option value="SD">South Dakota</option>
+				                                <option value="TN">Tennessee</option>
+				                                <option value="TX">Texas</option>
+				                                <option value="UT">Utah</option>
+				                                <option value="VT">Vermont</option>
+				                                <option value="VA">Virginia</option>
+				                                <option value="WA">Washington</option>
+				                                <option value="WV">West Virginia</option>
+				                                <option value="WI">Wisconsin</option>
+				                                <option value="WY">Wyoming</option>
+				                            </select>
+				                        </div>
+				                        <div class="form-group">
+				                            <label style="color:#666666;" for="zipcode" class="control-label">Zip Code: </label>
+				                            <input type="text" class="form-control" id="zipcode">
+				                        </div>
+			                            <script>
+									      $( function(){
+									        $( "#datehost" ).datepicker();
+									      });
+									    </script>
 							        </form>
 						        </div>
 						    </div>
@@ -91,11 +177,42 @@
 		</div>
 	</div>
 		<div class="col-xs-6 text-center" class="task">
-			  {{#each burger_data}}
-			  	{{#if this.devoured}}
-			  		<input class="form-control" type="text" placeholder="{{this.id}} . {{this.burger_name}}" readonly>
-				{{/if}}
-			  {{/each}}
+			<script type="text/javascript">
+				$('#mytable').dynatable();
+			</script>
+			<div class="row">
+				  {{#each game_data}}
+				  	{{#if hosted}}
+				  		<table id="mytable">
+						  <thead>
+						    <tr>
+						      <th>User</th>
+						      <th>Address</th>
+						      <th>Apartment</th>
+						      <th>City</th>
+						      <th>State</th>
+						      <th>Zipcode</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						     <a class="page-scroll" href="#map"><tr>
+						      <td>{{username}}</td>
+						      <td>{{address}}</td>
+						      <td>{{apartment}}</td>
+						      <td>{{city}}</td>
+						      <td>{{state}}</td>
+						      <td>{{zipcode}}</td>
+						    </tr></a>
+						  </tbody>
+						</table>
+					{{/if}}
+				  {{/each}}
+			</div>
+		</div>
+		<div class="col-xs-6 text-center" class="task">
+			<div class="map">
+				  
+			</div>
 		</div>
 	</div>
 </div>

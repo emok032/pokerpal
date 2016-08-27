@@ -3,8 +3,14 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
- .jumbotron{
-  background-color: gray;
+ .jumbotron {
+  background-color: #3f3a3a;
+  opacity: .9;
+  
+ }
+
+ .jstyle{
+  text-shadow: 2px 2px black;
  }
 
 body {
