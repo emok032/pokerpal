@@ -177,13 +177,15 @@
 		</div>
 	</div>
 		<div class="col-xs-6 text-center" class="task">
-			<script type="text/javascript">
-				$('#mytable').dynatable();
-			</script>
 			<div class="row">
 				  {{#each game_data}}
 				  	{{#if hosted}}
 				  		<table id="mytable">
+				  		<script type="text/javascript">
+							$( function(){
+						        $('#mytable').dynatable();
+						    });
+						</script>
 						  <thead>
 						    <tr>
 						      <th>User</th>
