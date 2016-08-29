@@ -80,15 +80,15 @@ app.get("/home/games", function(req, res){
 //     res.redirect('/');
 //   });
 //
-app.post("/register", function(req, res){
-  models.User.create(
-    {
-      username: req.body.username,
-      password: req.body.password,
-      email: req.body.email
-    }
-  );
-});
+// app.post("/register", function(req, res){
+//   models.User.create(
+//     {
+//       username: req.body.username,
+//       password: req.body.password,
+//       email: req.body.email
+//     }
+//   );
+// });
 
 //Defining middleware to serve static files
 app.use('/static', express.static('public'));
