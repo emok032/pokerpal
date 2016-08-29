@@ -1,10 +1,32 @@
 {
   "name": "pokerpal",
   "version": "1.0.0",
-  "description": "A poker game locator service",
-  "main": "index.js",
+  "description": "[Grayscale](http://startbootstrap.com/template-overviews/grayscale/) is a multipurpose, one page HTML theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This template features various content sections and a Google Maps section with a custom map marker.",
+  "main": "mailer.js",
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.2",
+    "connect-redis": "^3.1.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.14.1",
+    "gulp": "^3.9.1",
+    "method-override": "^2.3.6",
+    "morgan": "^1.7.0",
+    "mysql": "^2.11.1",
+    "nodemailer": "^2.5.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "sequelize": "^3.24.1",
+    "sequelize-cli": "^2.4.0",
+    "serve-favicon": "^2.3.0"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -15,15 +37,5 @@
   "bugs": {
     "url": "https://github.com/emadkheiralla/PokerPal/issues"
   },
-  "homepage": "https://github.com/emadkheiralla/PokerPal#readme",
-  "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "express-handlebars": "^3.0.0",
-    "moment": "^2.14.1",
-    "mysql": "^2.11.1",
-    "nodemailer": "^2.5.0",
-    "sequelize": "^3.24.1",
-    "sequelize-cli": "^2.4.0"
-  }
+  "homepage": "https://github.com/emadkheiralla/PokerPal#readme"
 }
