@@ -36,7 +36,6 @@ app.set('view engine', 'handlebars');
 var users_controller = require('./controllers/users_controller');
 app.use('/', users_controller);
 
-
 // Basic route that sends the user first to the AJAX Page
 // app.get('/', function (req, res) {
 //   // res.send('Welcome to the Star Wars Page!')

@@ -32,7 +32,7 @@ router.get("/home/games", function(req, res){
     include: [models.User]
   })
   .then(function(games){
-    res.render('')
+    res.render('home')
   })
 })
 //passport implementation
@@ -71,6 +71,19 @@ router.post("/register", function(req, res){
       password: req.body.password,
       email: req.body.email
     }).then(function(users){res.redirect('/home')   
+  });
+});
+
+router.post("/host", function(req, res){
+  models.game.create({
+    zipcode: req.body.zipcode,
+    address: req.body.address,
+    city: req.body.city,
+    state: req.body.state,
+    apt: req.body.apt,
+    date: req.body.date,
+    time: req.body.time
+    }).then(function(games){res.redirect('/home/games')   
   });
 });
 
