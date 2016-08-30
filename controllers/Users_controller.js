@@ -28,13 +28,13 @@ router.get("/home", function(req, res){
 });
 
 router.get("/home/games", function(req, res){
-  models.game.findAll({
-    include: [models.User]
+  models.Game.findAll({
+    include: [models.Game]
   })
   .then(function(games){
-    res.render('home')
+    res.render("home")
   })
-})
+});
 //passport implementation
 passport.use(new LocalStrategy(
   function(username, password, done) {
@@ -74,8 +74,22 @@ router.post("/register", function(req, res){
   });
 });
 
-router.post("/host", function(req, res){
-  models.game.create({
+// router.post("/host/games", function(req, res){
+//   models.Game.create({
+//     zipcode: req.body.zipcode,
+//     address: req.body.address,
+//     city: req.body.city,
+//     state: req.body.state,
+//     apt: req.body.apt,
+//     date: req.body.date,
+//     time: req.body.time
+//     }).then(function(games){res.redirect('/home')   
+//   });
+// });
+
+router.post("/games", function (req, res) {
+  models.Game.create({
+    // columnName: req.body.htmlFormName
     zipcode: req.body.zipcode,
     address: req.body.address,
     city: req.body.city,
@@ -83,7 +97,9 @@ router.post("/host", function(req, res){
     apt: req.body.apt,
     date: req.body.date,
     time: req.body.time
-    }).then(function(games){res.redirect('/home/games')   
+    // user_id: req.session.user_id
+  }).then(function(games) { // connect the .create to this .then
+    res.redirect('/home');
   });
 });
 

@@ -58,30 +58,30 @@
                         <div class="container">
 						    <div style="margin:0;" class="row">
 						        <div class='col-sm-6'>
-							        <form action="/host/games" method="POST">
+							        <form action="/games" method="POST">
 						            	<div class="form-group">
 							                <label style="color:#666666;" for="datehost" class="control-label"> Choose Date: </label>
-				                            <input type="text" class="form-control" id="datehost">
+				                            <input type="text" class="form-control" id="datehost" name="date">
 			                            </div>
 			                            <div class="form-group">
 				                            <label style="color:#666666;" for="timehost" class="control-label"> Choose Time: </label>
-				                            <input type="time" class="form-control" id="timehost">
+				                            <input type="time" class="form-control" id="timehost" name="time">
 				                        </div>
 			                            <div class="form-group">
 				                            <label style="color:#666666;" for="address" class="control-label">(Game) Address: </label>
-				                            <input type="email" class="form-control" id="address">
+				                            <input type="text" class="form-control" id="address" name="address">
 				                        </div>
 				                        <div class="form-group">
 				                            <label style="color:#666666;" for="apt" class="control-label"> Apt: </label>
-				                            <input type="text" class="form-control" id="apt">
+				                            <input type="text" class="form-control" id="apt" name="apt">
 				                        </div>
 				                        <div class="form-group">
 				                            <label style="color:#666666;" for="city" class="control-label"> City: </label>
-				                            <input type="text" class="form-control" id="city">
+				                            <input type="text" class="form-control" id="city" name="city">
 				                        </div>
 				                        <div class="form-group">
 				                            <label style="color:#666666;" for="state" class="control-label"> State: </label>
-				                            <select class="form-control" id="state">
+				                            <select class="form-control" id="state" name="state">
 				                                <option value="AL" selected="selected">Choose One</option>
 				                                <option value="AL">Alabama</option>
 				                                <option value="AK">Alaska</option>
@@ -138,20 +138,20 @@
 				                        </div>
 				                        <div class="form-group">
 				                            <label style="color:#666666;" for="zipcode" class="control-label">Zip Code: </label>
-				                            <input type="text" class="form-control" id="zipcode">
+				                            <input type="text" class="form-control" id="zipcode" name="zipcode">
 				                        </div>
 			                            <script>
 									      $( function(){
 									        $( "#datehost" ).datepicker();
 									      });
 									    </script>
+									<input type="submit" class="btn btn-primary btn-lg">
 							        </form>
 						        </div>
 						    </div>
 						</div>
                 </div>
                 <div class="modal-footer">
-                    <button style="float:left;" type="button" class="btn btn-primary btn-lg">Host</button>
                 </div>
             </div>
         </div>
