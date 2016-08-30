@@ -19,10 +19,17 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="https://use.fontawesome.com/a0201e2fa4.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dynatable/0.3.1/jquery.dynatable.css">
 
     <!-- Theme CSS -->
     <link href="css/grayscale.css" rel="stylesheet">
 
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.js"></script>
+    
+
+
+  
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -33,7 +40,7 @@
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
+    
     <!-- Navigation -->
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
@@ -57,7 +64,7 @@
                         <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll reg" href="footer">Register</a>
+                        <a class="page-scroll reg" href="#footer">Register</a>
                     </li>
                     <li>
                         <a class="page-scroll" data-toggle="modal" data-target="#loginModal">Login</a>
@@ -173,20 +180,56 @@
         </div>
     </div>
 
+    <div class="col-md-6 text-center" class="task">
+            <div class="row">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Username</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+
     <!-- Footer -->
-    <footer >
+    <footer id="footer">
         <div class="container text-center">
             <p style="font-size:8px;">Copyright &copy; Poker Pal 2016</p>
         </div>
     </footer>
+
+
 
     <!--date picker-->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
 
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.js"></script>
+    
 
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -212,6 +255,9 @@
         });
 
     </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Dynatable/0.3.1/jquery.dynatable.js"></script>
+    
 
 
 

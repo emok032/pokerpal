@@ -7,6 +7,10 @@ var path = require('path');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+var User = models.User;
+var Game = models.Game;
+var enteredApplication;
+
 
 //this is the users_controller.js file
 router.get('/', function(req, res){
@@ -22,6 +26,25 @@ router.get('/', function(req, res){
 // router.get("/register", function(req, res){
 //   res.render("home")
 // });
+
+// router.get('/home', function (req, res){
+//       if (req.user) {
+//           Game.findAll({where: {UserId: req.user.id} }).then(function(success){
+//             enteredApplication = success;
+//           })
+//           data = {
+//             user: req.user,
+//             enteredApp: enteredApplication
+//           }
+//           res.render('home', {data: data});
+//           Game.findAll({where: {UserId: req.user.id} }).then(function(success){
+//             enteredApplication = success;
+//           })
+//     } else {
+//           res.render('home');
+//     }
+//   });
+
 
 
 router.get('/home', function(req, res){
@@ -91,7 +114,7 @@ router.post('/login',
   function(req, res){
     console.log('Success');
     res.redirect('/home');
-    console.log(req.session.)
+    console.log(req.session.user);
  });
 
 // router.post('/login',
