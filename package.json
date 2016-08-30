@@ -2,7 +2,7 @@
   "name": "pokerpal",
   "version": "1.0.0",
   "description": "[Grayscale](http://startbootstrap.com/template-overviews/grayscale/) is a multipurpose, one page HTML theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This template features various content sections and a Google Maps section with a custom map marker.",
-  "main": "mailer.js",
+  "main": "server.js",
   "dependencies": {
     "bcrypt": "^0.8.7",
     "bcryptjs": "^2.3.0",

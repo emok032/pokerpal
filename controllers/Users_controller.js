@@ -7,6 +7,7 @@ var path = require('path');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+
 //this is the users_controller.js file
 router.get('/', function(req, res){
   res.sendFile(path.join(__dirname, '..', 'index.html'));
@@ -50,25 +51,30 @@ router.get("/home", function(req, res){
 
 passport.use(new LocalStrategy(
  function(username, password, done) {
-   models.User.findOne({ username: username }, function (err, user) {
-     if (err) { return done(err); }
+   console.log(password);
+   models.User.findOne({where: { username: username, password: password }
+    }).then(function (user) {
+     console.log(user);
+     // if (err) { return done(err); }
      if (!user) {
        return done(null, false, { message: 'Incorrect username.' });
+       console.log("Incorrect username");
      }
-     if (!user.validPassword(password)) {
-       return done(null, false, { message: 'Incorrect password.' });
-     }
+     // if (!user.validPassword(password)) {
+     //   return done(null, false, { message: 'Incorrect password.' });
+     // }
      return done(null, user);
-   });
- }
-));
+   }).catch(function(err) {
+           throw err;
+  })
+ }));
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
-  User.findById(id, function (err, user) {
+  models.User.findById(id, function (err, user) {
     done(err, user);
   });
 });
