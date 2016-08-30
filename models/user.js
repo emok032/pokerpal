@@ -8,8 +8,8 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        User.hasMany(models.Game, {through: models.UserGames});
-      }
+        User.hasMany(models.Game); //, {as: "Game"});
+      } //, {through: models.UserGames}
     }
   });
   return User;

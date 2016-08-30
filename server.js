@@ -36,56 +36,6 @@ app.set('view engine', 'handlebars');
 var users_controller = require('./controllers/users_controller');
 app.use('/', users_controller);
 
-// Basic route that sends the user first to the AJAX Page
-// app.get('/', function (req, res) {
-//   // res.send('Welcome to the Star Wars Page!')
-//   res.sendFile(path.join(__dirname, 'index.html'));
-// });
-
-// app.get("/home", function(req, res){
-//   res.render("home")
-// });
-
-// app.get("/home/games", function(req, res){
-//   models.game.findAll({
-//     include: [models.User]
-//   })
-//   .then(function(games){
-//     res.render('')
-//   })
-// })
-
-// //passport implementation
-// passport.use(new LocalStrategy(
-//   function(username, password, done) {
-//     models.User.findOne({ username: username }, function (err, user) {
-//       if (err) { return done(err); }
-//       if (!user) { return done(null, false); }
-//       if (!user.verifyPassword(password)) { return done(null, false); }
-//       return done(null, user);
-//     });
-//   }
-// ));
-//
-// passport.serializeUser(function(user, done) {
-//   done(null, user.id);
-// });
-//
-// passport.deserializeUser(function(id, done) {
-//   User.findById(id, function (err, user) {
-//     done(err, user);
-//   });
-// });
-//
-// //authentication request for passport
-// app.post("/login",
-//   passport.authenticate('local', {failureRedirect: '/login'}),
-//   function(req, res){
-//     res.redirect('/');
-//   });
-//
-
-
 //Defining middleware to serve static files
 app.use('/static', express.static('public'));
 
