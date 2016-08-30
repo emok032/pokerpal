@@ -24,8 +24,8 @@ router.get('/', function(req, res){
 // });
 
 
-router.get("/home", function(req, res){
-  res.render("home")
+router.get('/home', function(req, res){
+  res.render('home');
 });
 
 // router.get("/home/games", function(req, res){
@@ -40,7 +40,7 @@ router.get("/home", function(req, res){
 //passport implementation
   // passport.use(new LocalStrategy(
   //   function(username, password, done) {
-  //     models.User.findOne({ username: username }, function (err, user) {
+  //     models.User.findOne({where: { username: username, password: password } }, function (err, user) {
   //       if (err) { return done(err); }
   //       if (!user) { return done(null, false); }
   //       if (!user.verifyPassword(password)) { return done(null, false); }
@@ -51,33 +51,37 @@ router.get("/home", function(req, res){
 
 passport.use(new LocalStrategy(
  function(username, password, done) {
-   console.log(password);
-   models.User.findOne({where: { username: username, password: password }
-    }).then(function (user) {
-     console.log(user);
+  console.log(password);
+  models.User.findOne(
+    {
+      where: 
+        {
+          username: username, 
+          password: password 
+        }
+    }
+  ).then(function (user) {
+    console.log(user);
      // if (err) { return done(err); }
-     if (!user) {
-       return done(null, false, { message: 'Incorrect username.' });
-       console.log("Incorrect username");
-     }
-     // if (!user.validPassword(password)) {
-     //   return done(null, false, { message: 'Incorrect password.' });
-     // }
-     return done(null, user);
-   }).catch(function(err) {
-           throw err;
+    if (!user) {
+      console.log("Incorrect username");
+    } else {
+      return user;
+    }
+  }).catch(function(err) {
+    throw err;
   })
- }));
+}));
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-  models.User.findById(id, function (err, user) {
-    done(err, user);
-  });
-});
+// passport.deserializeUser(function(id, done) {
+//   models.User.findById(id, function (err, user) {
+//     done(err, user);
+//   });
+// });
 
 //authentication request for passport
 router.post('/login',
@@ -86,6 +90,15 @@ router.post('/login',
     console.log('Success');
     res.redirect('/home');
  });
+
+// router.post('/login',
+//   function(req, res){
+//     models.User.findOne({where: {username: req.body.username, password: req.body.password}}).then(function(){
+        
+//     })
+//     console.log('Success');
+//     res.redirect('/home');
+//  });
 
 // was "/register"
 router.post("/register", function(req, res){

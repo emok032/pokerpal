@@ -36,8 +36,6 @@ app.set('view engine', 'handlebars');
 var users_controller = require('./controllers/users_controller');
 app.use('/', users_controller);
 
-
-
 //Defining middleware to serve static files
 app.use('/static', express.static('public'));
 
