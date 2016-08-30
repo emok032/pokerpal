@@ -51,7 +51,7 @@ router.get('/home', function(req, res){
 
 passport.use(new LocalStrategy(
  function(username, password, done) {
-  console.log(password);
+  //console.log(password);
   models.User.findOne(
     {
       where: 
@@ -61,13 +61,12 @@ passport.use(new LocalStrategy(
         }
     }
   ).then(function (user) {
-    console.log(user);
+    //console.log(user);
      // if (err) { return done(err); }
     if (!user) {
-      console.log("Incorrect username");
-    } else {
-      return user;
+      return done(null, false, console.log("Incorrect credentials"));
     }
+      return done(null, user);
   }).catch(function(err) {
     throw err;
   })
@@ -77,18 +76,22 @@ passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
-// passport.deserializeUser(function(id, done) {
-//   models.User.findById(id, function (err, user) {
-//     done(err, user);
-//   });
-// });
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+  });
+  // function (err, user) {
+  //   done(err, user);
+  // });
 
 //authentication request for passport
 router.post('/login',
-  passport.authenticate('local', {failureRedirect: '/'}),
+  passport.authenticate('local'
+    , {failureRedirect: '/'}
+    ),
   function(req, res){
     console.log('Success');
     res.redirect('/home');
+    console.log(req.session.)
  });
 
 // router.post('/login',
@@ -107,6 +110,8 @@ router.post("/register", function(req, res){
       password: req.body.password,
       email: req.body.email
     }).then(function(users){res.redirect('/')   
+  }, function(err){
+    throw err
   });
 });
 
@@ -120,7 +125,7 @@ router.post("/games", function (req, res) {
     apt: req.body.apt,
     date: req.body.date,
     time: req.body.time
-    // user_id: req.session.user_id
+    // user_id: req.session.user_id (or find a way to access this if it is wrong. also sid's api needs this userid to put address into search)
   }).then(function(games) { // connect the .create to this .then
     res.redirect('/home');
   });
