@@ -74,19 +74,6 @@ router.post("/register", function(req, res){
   });
 });
 
-// router.post("/host/games", function(req, res){
-//   models.Game.create({
-//     zipcode: req.body.zipcode,
-//     address: req.body.address,
-//     city: req.body.city,
-//     state: req.body.state,
-//     apt: req.body.apt,
-//     date: req.body.date,
-//     time: req.body.time
-//     }).then(function(games){res.redirect('/home')   
-//   });
-// });
-
 router.post("/games", function (req, res) {
   models.Game.create({
     // columnName: req.body.htmlFormName
