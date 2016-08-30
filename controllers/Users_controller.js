@@ -27,24 +27,40 @@ router.get("/home", function(req, res){
   res.render("home")
 });
 
-router.get("/home/games", function(req, res){
-  models.Game.findAll({
-    include: [models.Game]
-  })
-  .then(function(games){
-    res.render("home")
-  })
-});
+// router.get("/home/games", function(req, res){
+//   models.Game.findAll({
+//     include: [models.Game]
+//   })
+//   .then(function(games){
+//     res.render("home")
+//   })
+// });
+
 //passport implementation
+  // passport.use(new LocalStrategy(
+  //   function(username, password, done) {
+  //     models.User.findOne({ username: username }, function (err, user) {
+  //       if (err) { return done(err); }
+  //       if (!user) { return done(null, false); }
+  //       if (!user.verifyPassword(password)) { return done(null, false); }
+  //       return done(null, user);
+  //     });
+  //   }
+  // ));
+
 passport.use(new LocalStrategy(
-  function(username, password, done) {
-    models.User.findOne({ username: username }, function (err, user) {
-      if (err) { return done(err); }
-      if (!user) { return done(null, false); }
-      if (!user.verifyPassword(password)) { return done(null, false); }
-      return done(null, user);
-    });
-  }
+ function(username, password, done) {
+   models.User.findOne({ username: username }, function (err, user) {
+     if (err) { return done(err); }
+     if (!user) {
+       return done(null, false, { message: 'Incorrect username.' });
+     }
+     if (!user.validPassword(password)) {
+       return done(null, false, { message: 'Incorrect password.' });
+     }
+     return done(null, user);
+   });
+ }
 ));
 
 passport.serializeUser(function(user, done) {
@@ -58,10 +74,11 @@ passport.deserializeUser(function(id, done) {
 });
 
 //authentication request for passport
-router.post("/login",
-  passport.authenticate('local', {failureRedirect: '/login'}),
+router.post('/login',
+  passport.authenticate('local', {failureRedirect: '/'}),
   function(req, res){
-    res.redirect('/');
+    console.log('Success');
+    res.redirect('/home');
  });
 
 // was "/register"
@@ -70,7 +87,7 @@ router.post("/register", function(req, res){
       username: req.body.username,
       password: req.body.password,
       email: req.body.email
-    }).then(function(users){res.redirect('/home')   
+    }).then(function(users){res.redirect('/')   
   });
 });
 
