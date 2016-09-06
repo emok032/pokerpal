@@ -75,7 +75,7 @@ router.get('/home', function(req, res){
 passport.use(new LocalStrategy(
  function(username, password, done) {
   //console.log(password);
-  models.User.findOne(
+  User.findOne(
     {
       where: 
         {
@@ -114,7 +114,6 @@ router.post('/login',
   function(req, res){
     console.log('Success');
     res.redirect('/home');
-    console.log(req.session.user);
  });
 
 // router.post('/login',
@@ -127,8 +126,8 @@ router.post('/login',
 //  });
 
 // was "/register"
-router.post("/register", function(req, res){
-  models.User.create({
+router.post('/register', function(req, res){
+  User.create({
       username: req.body.username,
       password: req.body.password,
       email: req.body.email
@@ -138,8 +137,37 @@ router.post("/register", function(req, res){
   });
 });
 
-router.post("/games", function (req, res) {
-  models.Game.create({
+router.get('/allgames', function(req, res) {
+
+  // SOLUTION:
+  // =========
+  // use the Cat model to find all cats,
+  // and use the include option to grab info from the User model.
+  // This will let us show the cat and it's owner.
+  Game.findAll({
+    include: [ User ]
+  })
+  // connect the findAll to this .then
+  .then(function(games) {
+    // grab the user info from our req.
+    // How is it in our req?
+    // This info gets saved to req via the users_controller.js file.
+    res.render('/home', {
+      username: req.session.username,
+      UserId: req.session.UserId,
+      zipcode: req.body.zipcode,
+      address: req.body.address,
+      city: req.body.city,
+      state: req.body.state,
+      apt: req.body.apt,
+      date: req.body.date,
+      time: req.body.time
+    });
+  });
+});
+
+router.post('/newgame', function (req, res) {
+  Game.create({
     // columnName: req.body.htmlFormName
     zipcode: req.body.zipcode,
     address: req.body.address,

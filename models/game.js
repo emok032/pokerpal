@@ -9,10 +9,17 @@ module.exports = function(sequelize, DataTypes) {
     date: DataTypes.DATE,
     time: DataTypes.TIME
   }, {
+    underscored: true,
+    freezeTableName: true,
+    tableName: 'games',
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
-        // Game.belongsToMany(models.User);
+        Game.belongsTo(models.User, {
+          onDelete: "CASCADE",
+          foreignKey: {
+            allowNull: false
+          }
+        })
       }
     }
   });

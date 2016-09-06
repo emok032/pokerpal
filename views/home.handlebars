@@ -6,8 +6,10 @@
 		<br>
 		<br>
 		<div class="jumbotron">
-	
-		  <h1 class="jstyle" style="text-align:center;"> Hello, Emad!</h1>
+			
+		  {{#if username}}
+		  Hello, {{username}}!
+		  {{/if}}
 	
 		  <p class="jstyle" style="text-align:center;"> Now that you are a member, what would you like to do?</p>
 		  <hr>
@@ -27,7 +29,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 style="color:#666666;" class="modal-title">Search for a game:</h4>
                 </div>
-                <form action="#">
+                <form action="/allgames" method="POST">
 	                <div class="modal-body">
 	                    <div class="form-group">
 	                        <label style="color:#666666;" for="zip" class="control-label"> Enter Zip Code: </label>
@@ -71,7 +73,7 @@
                         <div class="container">
 						    <div style="margin:0;" class="row">
 						        <div class='col-sm-6'>
-							        <form action="/games" method="POST">
+							        <form action="/newgame" method="POST">
 						            	<div class="form-group">
 							                <label style="color:#666666;" for="datehost" class="control-label"> Choose Date: </label>
 				                            <input type="text" class="form-control" id="datehost" name="date">
@@ -185,36 +187,18 @@
 		            </tr>
 		          </thead>
 		          <tbody>
+		          	{{#each games}}
 		            <tr>
-		              <th scope="row">1</th>
-		              <td>192 W 25TH ST</td>
-		              <td>A2</td>
-		              <td>BAYONNE</td>
-		              <td>NEW JERSEY</td>
-		              <td>07002</td>
-		              <td>SEP 01, 2016</td>
-		              <td>08:00 PM</td>
+		              <th scope="row">{{UserId}}</th>
+		              <td>{{address}}</td>
+		              <td>{{apt}}</td>
+		              <td>{{city}}</td>
+		              <td>{{state}}</td>
+		              <td>{{zipcode}}</td>
+		              <td>{{date}}</td>
+		              <td>{{time}}</td>
 		            </tr>
-		            <tr>
-		              <th scope="row">2</th>
-		              <td>19 E 49TH ST</td>
-		              <td>HOUSE</td>
-		              <td>BAYONNE</td>
-		              <td>NEW JERSEY</td>
-		              <td>07002</td>
-		              <td>SEP 01, 2016</td>
-		              <td>06:00 PM</td>
-		            </tr>
-		            <tr>
-		              <th scope="row">3</th>
-		              <td>99 BROADWAY AVE</td>
-		              <td>34</td>
-		              <td>BAYONNE</td>
-		              <td>NEW JERSEY</td>
-		              <td>07002</td>
-		              <td>SEP 01, 2016</td>
-		              <td>11:00 PM</td>
-		            </tr>
+		            {{/each}}
 		          </tbody>
 		        </table>
 		    </div>

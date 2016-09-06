@@ -42,7 +42,7 @@ db.sync();
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-var users_controller = require('./controllers/users_controller');
+var users_controller = require('./controllers/Users_controller');
 app.use('/', users_controller);
 
 //Defining middleware to serve static files
