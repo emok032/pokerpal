@@ -1,9 +1,14 @@
+
+    
+    
 <div class="container">
 	<div class="row">
 		<br>
 		<br>
 		<div class="jumbotron">
-		  <h1 class="jstyle" style="text-align:center;"> Hello, {{username}}!</h1>
+	
+		  <h1 class="jstyle" style="text-align:center;"> Hello, Emad!</h1>
+	
 		  <p class="jstyle" style="text-align:center;"> Now that you are a member, what would you like to do?</p>
 		  <hr>
 		  <div class="btn-group center-block" style="max-width:400px"> 
@@ -22,25 +27,33 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 style="color:#666666;" class="modal-title">Search for a game:</h4>
                 </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label style="color:#666666;" for="zip" class="control-label"> Enter Zip Code: </label>
-                            <input type="text" class="form-control" id="zip">
-                            <label style="color:#666666;" for="datesearch" class="control-label"> Choose a Date: </label>
-                            <input type="text" class="form-control" id="datesearch">
+                <form action="#">
+	                <div class="modal-body">
+	                    <div class="form-group">
+	                        <label style="color:#666666;" for="zip" class="control-label"> Enter Zip Code: </label>
+	                        <input type="text" class="form-control" id="zip">
+	                        <label style="color:#666666;" for="datesearch" class="control-label"> Choose a Date: </label>
+	                        <input type="text" class="form-control" id="datesearch">
 
-                            <script>
+	                        <script>
 						      $( function(){
 						        $( "#datesearch" ).datepicker();
 						      });
 						    </script>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button style="float:left;" type="button" class="btn btn-primary btn-lg">Search</button>
-                </div>
+						    
+	                    </div>
+	                </div>
+
+	                <div class="modal-footer">
+	                    <input style="float:left;" data-dismiss="modal" type="submit" id="findgames" class="btn btn-primary btn-lg" value="Find Game">
+	                    <script>
+	                    	
+					    	$("#findgames").on("click", function(){
+							    $("#mytable").css("visibility", "visible");
+							});
+					    </script>
+	                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -58,30 +71,30 @@
                         <div class="container">
 						    <div style="margin:0;" class="row">
 						        <div class='col-sm-6'>
-							        <form>
+							        <form action="/games" method="POST">
 						            	<div class="form-group">
 							                <label style="color:#666666;" for="datehost" class="control-label"> Choose Date: </label>
-				                            <input type="text" class="form-control" id="datehost">
+				                            <input type="text" class="form-control" id="datehost" name="date">
 			                            </div>
 			                            <div class="form-group">
 				                            <label style="color:#666666;" for="timehost" class="control-label"> Choose Time: </label>
-				                            <input type="time" class="form-control" id="timehost">
+				                            <input type="time" class="form-control" id="timehost" name="time">
 				                        </div>
 			                            <div class="form-group">
 				                            <label style="color:#666666;" for="address" class="control-label">(Game) Address: </label>
-				                            <input type="email" class="form-control" id="address">
+				                            <input type="text" class="form-control" id="address" name="address">
 				                        </div>
 				                        <div class="form-group">
 				                            <label style="color:#666666;" for="apt" class="control-label"> Apt: </label>
-				                            <input type="text" class="form-control" id="apt">
+				                            <input type="text" class="form-control" id="apt" name="apt">
 				                        </div>
 				                        <div class="form-group">
 				                            <label style="color:#666666;" for="city" class="control-label"> City: </label>
-				                            <input type="text" class="form-control" id="city">
+				                            <input type="text" class="form-control" id="city" name="city">
 				                        </div>
 				                        <div class="form-group">
 				                            <label style="color:#666666;" for="state" class="control-label"> State: </label>
-				                            <select class="form-control" id="state">
+				                            <select class="form-control" id="state" name="state">
 				                                <option value="AL" selected="selected">Choose One</option>
 				                                <option value="AL">Alabama</option>
 				                                <option value="AK">Alaska</option>
@@ -138,79 +151,74 @@
 				                        </div>
 				                        <div class="form-group">
 				                            <label style="color:#666666;" for="zipcode" class="control-label">Zip Code: </label>
-				                            <input type="text" class="form-control" id="zipcode">
+				                            <input type="text" class="form-control" id="zipcode" name="zipcode">
 				                        </div>
 			                            <script>
 									      $( function(){
 									        $( "#datehost" ).datepicker();
 									      });
 									    </script>
+									<input type="submit" class="btn btn-primary btn-lg">
 							        </form>
 						        </div>
 						    </div>
 						</div>
                 </div>
                 <div class="modal-footer">
-                    <button style="float:left;" type="button" class="btn btn-primary btn-lg">Host</button>
                 </div>
             </div>
         </div>
     </div>
-
-	<div class="col-xs-6 text-center" class="task">
-		<div class="row">
-		  {{#each burger_data}}
-		  	{{#unless this.devoured}}
-			<div class="col-xs-9 text-center">
-				<pre>{{this.id}}. {{this.burger_name}}
-				</pre>
-			  		<!-- {{this.Date}} -->
-			</div>
-			<div class="col-xs-3 text-center">
-				<form method="POST" action="/burgers/update?_method=PUT" class="button-size">
-					<input input type="hidden" type="text" name="burger_id" value={{this.id}}><br>
-					<button type="submit" class="btn btn-default">Devour it!</button>
-				</form>
-			</div>
-			{{/unless}}
-		  {{/each}}
-		</div>
-	</div>
-		<div class="col-xs-6 text-center" class="task">
-			<div class="row">
-				  {{#each game_data}}
-				  	{{#if hosted}}
-				  		<table id="mytable">
-				  		<script type="text/javascript">
-							$( function(){
-						        $('#mytable').dynatable();
-						    });
-						</script>
-						  <thead>
-						    <tr>
-						      <th>User</th>
-						      <th>Address</th>
-						      <th>Apartment</th>
-						      <th>City</th>
-						      <th>State</th>
-						      <th>Zipcode</th>
-						    </tr>
-						  </thead>
-						  <tbody>
-						     <a class="page-scroll" href="#map"><tr>
-						      <td>{{username}}</td>
-						      <td>{{address}}</td>
-						      <td>{{apartment}}</td>
-						      <td>{{city}}</td>
-						      <td>{{state}}</td>
-						      <td>{{zipcode}}</td>
-						    </tr></a>
-						  </tbody>
-						</table>
-					{{/if}}
-				  {{/each}}
-			</div>
-		</div>
+		<div class="col-lg-6 text-center">
+		    <div class="row">
+		        <table class="table" id="mytable">
+		          <thead>
+		            <tr>
+		              <th>ID</th>
+		              <th>ADDRESS</th>
+		              <th>APARTMENT</th>
+		              <th>CITY</th>
+		              <th>STATE</th>
+		              <th>ZIP</th>
+		              <th>DATE</th>
+		              <th>TIME</th>
+		            </tr>
+		          </thead>
+		          <tbody>
+		            <tr>
+		              <th scope="row">1</th>
+		              <td>192 W 25TH ST</td>
+		              <td>A2</td>
+		              <td>BAYONNE</td>
+		              <td>NEW JERSEY</td>
+		              <td>07002</td>
+		              <td>SEP 01, 2016</td>
+		              <td>08:00 PM</td>
+		            </tr>
+		            <tr>
+		              <th scope="row">2</th>
+		              <td>19 E 49TH ST</td>
+		              <td>HOUSE</td>
+		              <td>BAYONNE</td>
+		              <td>NEW JERSEY</td>
+		              <td>07002</td>
+		              <td>SEP 01, 2016</td>
+		              <td>06:00 PM</td>
+		            </tr>
+		            <tr>
+		              <th scope="row">3</th>
+		              <td>99 BROADWAY AVE</td>
+		              <td>34</td>
+		              <td>BAYONNE</td>
+		              <td>NEW JERSEY</td>
+		              <td>07002</td>
+		              <td>SEP 01, 2016</td>
+		              <td>11:00 PM</td>
+		            </tr>
+		          </tbody>
+		        </table>
+		    </div>
+	    </div>
 		<div class="col-xs-6 text-center" class="task">
 			<div class="map">
 				  
