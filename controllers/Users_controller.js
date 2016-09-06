@@ -70,7 +70,7 @@ router.post("/register", function(req, res){
       username: req.body.username,
       password: req.body.password,
       email: req.body.email
-    }).then(function(users){res.redirect('/home')   
+    }).then(function(users){res.redirect('index.html')   
   });
 });
 
